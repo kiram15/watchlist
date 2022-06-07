@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
-import { CardGroup } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import { CardGroup, Form, FormControl, Navbar } from 'react-bootstrap';
+import { PlayCircle } from 'react-feather';
 
 import './App.css';
-import Header from './Header';
 import Movie from './Movie';
-import Month from './Month';
 
 function App() {    
   const APIURL = "https://api.themoviedb.org/3/discover/movie?api_key=04c35731a5ee918f014970082a0088b1";
@@ -12,22 +11,24 @@ function App() {
 
   const [results, setResults] = useState();  
   const [isLoaded, setIsLoaded] = useState(false);
-
-  const search = document.getElementById("search"); 
+  const [searchVal, setSearchVal] = useState('');
+  const handleChange = (e) => setSearchVal(e.target.value);
 
   const getMovies = async (url) => {
       const resp = await fetch(url);
       const respData = await resp.json(); 
       setResults(respData.results);
       setIsLoaded(true);
-  } 
+  }
+  useEffect(() => {
+    getMovies(APIURL);
+ }, []);
 
   let movies = null;
-
   if (isLoaded) {
     movies = results.map((movie) => (
       <Movie 
-        key={movie.title}
+        key={movie.id}
         poster_path={movie.poster_path} 
         vote_average={movie.vote_average}
         overview={movie.overview}>
@@ -35,24 +36,32 @@ function App() {
     ));
   }
 
-  function handleSubmit(e) {
-    e.preventDefault(); 
-
-    const searchTerm = search.value;  
-
-    if (searchTerm) {
-        getMovies(SEARCHAPI + searchTerm);  
-
-        search.value = "";
+  const searchSubmit = (e) => {    
+    e.preventDefault();
+    console.log("searchSubmit");
+    console.log(searchVal);
+    if (searchVal.trim()) {
+        getMovies(SEARCHAPI + searchVal);  
+        setSearchVal('');
     }
   }
 
-  getMovies(APIURL);  
-
   return (
     <span className='main-body'>
-      <Header></Header>
-      <Month></Month>
+      <Navbar className='header'>
+        <span className="title">
+          <PlayCircle className="play-icon"/>
+          <Navbar.Brand className="title-text">watchlist</Navbar.Brand>
+        </span>
+        <Form className="d-flex" onSubmit={searchSubmit}>
+          <FormControl
+            placeholder="search"
+            className="search"
+            defaultValue={searchVal}
+            onChange={handleChange}
+          />
+        </Form>    
+      </Navbar>
       <CardGroup className='card-group'>
         {movies}
       </CardGroup>

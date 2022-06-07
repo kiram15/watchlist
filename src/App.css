@@ -1,49 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap");
 
-.App {
-  text-align: center;
-}
+/* GENERAL */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+.App { text-align: center; }
+.main-body { background-color: #252525; }
+* { box-sizing: border-box; }
+div { display: flex; flex-wrap: wrap; }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+/* HEADER */
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.main-body {
-  background-color: #a4c3b2;
-}
-* {
-    box-sizing: border-box;
+.play-icon {
+  float: left;
 }
 
 .card-group {
@@ -51,34 +18,40 @@
 }
 
 .header {
-    background-color: #6b9080;
+    background-color: #252525;
     display: flex;
-    justify-content: center;
-    padding: 20px;
+    justify-content: space-between;
+    padding-left: 8rem;
+    padding-right: 8rem;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
     color: white
 }
 
-h1{
-    color: whitesmoke;
-    align-self: center;
-    margin-left: 28rem;
+.title {
+  display: inline-flex;
+  align-items: center;
 }
 
+.title-text {
+  font-family: monospace;
+  padding-left: 5px;
+  font-size: 20px;
+}
 
 .search {
-    margin: 3rem;
-    margin-left: 12rem;
     background-color: transparent;
-    border: 2px solid #e9e9ec;
+    border: 1px solid #e9e9ec;
     border-radius: 50px;
     color: #fff;
-    font-family: inherit;
-    font-size: 1rem;
+    font-family: monospace;
+    font-size: 12px;
     padding: 0.5rem 1rem;
+    box-shadow: 0 0 10px #555555;
 }
 
 .search::placeholder {
-    color: #7378c5;
+    color: #fff;
 }
 
 .search:focus {
@@ -86,15 +59,13 @@ h1{
     outline: none;
 }
 
-div{
-    display: flex;
-    flex-wrap: wrap;
-}
+/* MOVIE CARDS */
 
 .movie {
-    background-color: #cce3de;
-    border-radius: 3px;
-    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    outline:none;
+    border-color:#555555;
+    box-shadow:0 0 10px #555555;
     overflow: hidden;
     position: relative;
     margin: 1rem;
@@ -115,17 +86,4 @@ div{
 .card-body {
   margin-top: 10px;
   margin-bottom: 5px;
-}
-
-
-.movie-info h3 {
-    margin: 0;
-}
-
-.movie-info span {
-    background-color: #22254b;
-    border-radius: 3px;
-    font-weight: bold;
-    padding: 0.25rem 0.8rem;
-
 }

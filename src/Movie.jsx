@@ -1,4 +1,4 @@
-import React, { useState }from "react";
+import React, { useState } from "react";
 import { Card } from 'react-bootstrap';
 import { Rating } from "react-simple-star-rating";
 
@@ -6,7 +6,7 @@ import './App.css';
 
 const Movie = ({ title, poster_path, overview }) => {
   const IMGPATH = "https://image.tmdb.org/t/p/w1280";
-  const [rating, setRating] = useState(0) // initial rating value
+  const [rating, setRating] = useState(0);
 
   const handleRating = (rate) => {
     if (rating) {
