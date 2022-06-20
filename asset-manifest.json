@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/watchlist/static/css/main.10e029c0.css",
+    "main.js": "/watchlist/static/js/main.5eaab64b.js",
+    "index.html": "/watchlist/index.html",
+    "main.10e029c0.css.map": "/watchlist/static/css/main.10e029c0.css.map",
+    "main.5eaab64b.js.map": "/watchlist/static/js/main.5eaab64b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.10e029c0.css",
+    "static/js/main.5eaab64b.js"
+  ]
+}
