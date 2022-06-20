@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { CardGroup, Form, FormControl, Navbar } from 'react-bootstrap';
-import { PlayCircle } from 'react-feather';
+import { Button, Form, FormControl, Modal, Navbar } from 'react-bootstrap';
+import { PlayCircle, Search } from 'react-feather';
 
 import './App.css';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Movie from './Movie';
+import Months from './Months';
 
 function App() {    
   const APIURL = "https://api.themoviedb.org/3/discover/movie?api_key=04c35731a5ee918f014970082a0088b1";
@@ -20,6 +22,7 @@ function App() {
       setResults(respData.results);
       setIsLoaded(true);
   }
+
   useEffect(() => {
     getMovies(APIURL);
  }, []);
@@ -38,8 +41,6 @@ function App() {
 
   const searchSubmit = (e) => {    
     e.preventDefault();
-    console.log("searchSubmit");
-    console.log(searchVal);
     if (searchVal.trim()) {
         getMovies(SEARCHAPI + searchVal);  
         setSearchVal('');
@@ -50,21 +51,23 @@ function App() {
     <span className='main-body'>
       <Navbar className='header'>
         <span className="title">
-          <PlayCircle className="play-icon"/>
-          <Navbar.Brand className="title-text">watchlist</Navbar.Brand>
+          <PlayCircle className="icon"/>
+          <span className="title-text">watchlist</span>
         </span>
-        <Form className="d-flex" onSubmit={searchSubmit}>
-          <FormControl
-            placeholder="search"
-            className="search"
-            defaultValue={searchVal}
-            onChange={handleChange}
-          />
-        </Form>    
+        <span className="d-flex align-items-center">
+          <Form className='search' onSubmit={searchSubmit}>
+            <FormControl
+              className='search-bar'
+              defaultValue={searchVal}
+              onChange={handleChange}
+            />
+            <Button className="icon" onClick={searchSubmit}>
+              <Search />
+            </Button>
+          </Form>
+        </span>
       </Navbar>
-      <CardGroup className='card-group'>
-        {movies}
-      </CardGroup>
+      <Months movies={movies} />
     </span>
   );
 };

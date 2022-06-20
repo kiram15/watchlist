@@ -1,16 +1,37 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap');
+
+:root {
+  --background: #252525;
+  --border: #555555;
+  --highlight: #888888;
+
+}
 
 /* GENERAL */
 
-.App { text-align: center; }
-.main-body { background-color: #252525; }
-* { box-sizing: border-box; }
-div { display: flex; flex-wrap: wrap; }
+.App { 
+  text-align: center; 
+}
+.main-body {
+  background-color: var(--background); 
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+* { 
+  box-sizing: border-box; 
+}
+div { 
+  display: flex; 
+  flex-wrap: wrap; 
+}
 
 /* HEADER */
 
-.play-icon {
+.icon {
   float: left;
+  background-color: var(--background) !important;
+  border: none !important;
+  color: white;
 }
 
 .card-group {
@@ -18,14 +39,14 @@ div { display: flex; flex-wrap: wrap; }
 }
 
 .header {
-    background-color: #252525;
-    display: flex;
-    justify-content: space-between;
-    padding-left: 8rem;
-    padding-right: 8rem;
-    padding-top: 2rem;
-    padding-bottom: 1rem;
-    color: white
+  background-color: var(--background);
+  display: flex;
+  justify-content: space-between !important;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 1.5rem !important;
+  padding-bottom: 1.5rem !important;
+  color: white
 }
 
 .title {
@@ -34,49 +55,72 @@ div { display: flex; flex-wrap: wrap; }
 }
 
 .title-text {
-  font-family: monospace;
-  padding-left: 5px;
-  font-size: 20px;
+  font-family: 'Rubik', sans-serif;
+  padding-left: 10px;
+  font-size: 35px;
+  color: white !important;
 }
 
 .search {
-    background-color: transparent;
-    border: 1px solid #e9e9ec;
-    border-radius: 50px;
-    color: #fff;
-    font-family: monospace;
-    font-size: 12px;
-    padding: 0.5rem 1rem;
-    box-shadow: 0 0 10px #555555;
+  display: flex;
+  align-items: center;
 }
 
-.search::placeholder {
-    color: #fff;
+.search-bar {
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 50px;
+  color: white;
+  font-family: monospace;
+  font-size: 12px;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 0 10px var(border);
 }
 
-.search:focus {
-    background-color: #050505;
-    outline: none;
+/* MOVIES */
+
+.card-group {
+  margin-left: 2rem;
+  margin-right: 2rem;
 }
 
-/* MOVIE CARDS */
+.month-header {
+  display: flex;
+  align-items: center;
+  color: white;
+  padding-left: 40rem;
+  padding-right: 8rem;
+  letter-spacing: 20px;
+  margin-left: auto;
+  text-transform: uppercase;
+}
+
+.arrow {
+  padding-right: 15px;
+}
 
 .movie {
-    border-radius: 20px;
-    outline:none;
-    border-color:#555555;
-    box-shadow:0 0 10px #555555;
-    overflow: hidden;
-    position: relative;
-    margin: 1rem;
-    justify-content: center;
-    align-content: center;
-    width: 265px;
+  border-radius: 20px !important;
+  border: none !important;
+  background-color: var(--background) !important;
+  outline: none;
+  border-color: var(--border) !important;
+  box-shadow: 0 0 10px var(--border);
+  overflow: hidden;
+  position: relative;
+  margin: 1rem;
+  justify-content: center;
+  align-content: center;
+  width: 265px;
+}
+
+.movie:hover {
+  box-shadow: 0 0 20px var(--highlight);
 }
 
 .movie img {
-    width: 100%;
-    top: 0px;
+  width: 100%;
+  top: 0px;
 }
 
 .rating empty-icons {
@@ -86,4 +130,30 @@ div { display: flex; flex-wrap: wrap; }
 .card-body {
   margin-top: 10px;
   margin-bottom: 5px;
+}
+
+/* MOVIE MODAL */
+
+.modal-content {
+  background-color: var(--background) !important;
+}
+
+.modal-header {
+  border-bottom: none !important;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+
+.modal-header .btn-close {
+  color: white !important;
+}
+
+.modal-header .close {
+  color: #fff; 
+  opacity: 1;
+}
+
+.modal-footer{
+  border-top: none !important;
 }

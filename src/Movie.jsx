@@ -1,12 +1,23 @@
-import React, { useState } from "react";
-import { Card } from 'react-bootstrap';
+import React, { useEffect, useState } from "react";
+import { Card, Modal, OverlayTrigger, Popover } from 'react-bootstrap';
 import { Rating } from "react-simple-star-rating";
 
 import './App.css';
+import MovieModal from './MovieModal';
 
-const Movie = ({ title, poster_path, overview }) => {
+const Movie = ({ title, poster_path }) => {
   const IMGPATH = "https://image.tmdb.org/t/p/w1280";
   const [rating, setRating] = useState(0);
+  const [show, setShow] = useState(false);
+  const handleShow = () => {
+    console.log("helloooo")
+    setShow(true);
+  }
+  const handleClose = () => {
+    console.log("here???")
+    setShow(false);
+  }
+
 
   const handleRating = (rate) => {
     if (rating) {
@@ -17,22 +28,14 @@ const Movie = ({ title, poster_path, overview }) => {
     }
   }
 
+  useEffect(() => {
+    console.log("show ", show);
+  }, [show]);
+
   return (
     <Card className='movie'>
-      <Card.Img variant="top" src={IMGPATH + poster_path} alt={title}/>
-      <Card.Body>
-        <div className='mt-4'>
-          <Rating
-            onClick={handleRating}
-            ratingValue={rating}
-            size={20}
-            label
-            fillColor='yellow'
-            emptyColor='gray'
-            className='rating' 
-          />
-        </div>
-      </Card.Body>
+      <Card.Img variant="top" src={IMGPATH + poster_path} alt={title} onClick={handleShow}/>
+      <MovieModal show={show} handleClose={handleClose} />)
     </Card>
   );
 };
